@@ -1,0 +1,95 @@
+PERSONAL ARCH INSTALL GUIDE
+
+Refer to the Arch Installation Guide here:
+https://wiki.archlinux.org/index.php/Installation_guide 
+
+--SWAPFILE--
+Do this after mounting the main partition but before pacstrap.
+Create the swapfile with:
+dd if=/dev/zero of=/mnt/swapfile bs=1M count=4096 status=progress
+chmod 600 /mnt/swapfile
+mkswap /mnt/swapfile
+swapon /mnt/swapfile
+
+--GRUB--
+DOS
+pacman -S grub
+grub-install /dev/sdX
+grub-mkconfig -o /boot/grub/grub.cfg
+
+UEFI
+pacman -S grub efibootmgr dosfstools
+mkfs.fat -F32 /dev/sda1
+mkdir /boot/EFI
+mount /dev/sda1 /boot/EFI
+grub-install --target=x86_64-efi --bootloader-id=grub_uefi --recheck
+grub-mkconfig -o /boot/grub/grub.cfg
+
+--USERS & SUDO--
+Install sudo with:
+pacman -S sudo
+
+Create a user with:
+useradd -m user_name
+passwd user_name
+
+Give user perms with:
+usermod -aG wheel,audio,video user_name
+
+Add user to sudoers with:
+visudo (uncomment %wheel line)
+
+--OTHER STUFF--
+Bluetooth:
+pacman -S bluez bluez-utils
+systemctl start bluetooth
+
+Wi-Fi:
+pacman -S networkmanager
+systemctl enable NetworkManager
+nmtui
+
+Ethernet:
+pacman -S dhcpcd
+systemctl enable dhcpcd
+
+NVIDIA Drivers:
+pacman -S nvidia nvidia-utils
+
+Intel Drivers:
+pacman -S mesa
+
+
+--REBOOT TO MAKE SURE EVERYTHING IS WORKING--
+exit
+reboot
+
+MOST THINGS FROM NOW ON CAN BE INSTALLED USING THE INSTALL SCRIPT
+HERE ARE MANUAL INSTRUCTIONS IN CASE THAT DOESN'T WORK:
+
+--SPICE (FOR GNOME BOXES TESTING)--
+sudo pacman -S spice-vdagent
+
+--PARU (AUR helper)--
+sudo pacman -S base-devel git
+cd /opt
+sudo git clone https://aur.archlinux.org/paru.git
+sudo chown -R username:username ./yay
+cd yay
+makepkg -si
+
+--GNOME--
+Install gnome with:
+sudo pacman -S gnome xorg
+
+(GDM won't be enabled by default in case something goes wrong.
+Enable the GDM service with 'sudo systemctl enable gdm')
+
+Fix GNOME Software issues with:
+sudo pacman -S gnome-software-packagekit-plugin
+
+--QTILE--
+Install Qtile (and essential programs) with:
+sudo pacman -S qtile kitty firefox feh
+
+
