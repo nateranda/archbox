@@ -88,8 +88,34 @@ Enable the GDM service with 'sudo systemctl enable gdm')
 Fix GNOME Software issues with:
 sudo pacman -S gnome-software-packagekit-plugin
 
+Install archbox repo with:
+cd ~/Downloads
+https://github.com/brunelli/gnome-shell-extension-installer
+
+Install extensions & tweaks with:
+sudo pacman -S gnome-shell-extensions gnome-tweaks
+
+Command Line Way:
+mkdir -p ~/.local/share/gnome-shell/extensions/<UUID>
+unzip -q ~/Downloads/archbox/<UUID>.zip -d ~/.local/share/gnome-shell/extensions/<UUID>
+gnome-shell-extension-tool -e <UUID>
+OR
+paru -S gnome-shell-extension-blur-my-shell-git gnome-shell-extension-audio-output-switcher-git gnome-shell-extension-arc-menu gnome-shell-extension-arch-update gnome-shell-extension-screenshot-git
+
 --QTILE--
 Install Qtile (and essential programs) with:
 sudo pacman -S qtile kitty firefox feh
 
+GNOME Extensions: (please lord get these tabs off of my hands)
+https://github.com/brunelli/gnome-shell-extension-installer
+https://extensions.gnome.org/extension/1010/archlinux-updates-indicator/ *
+https://extensions.gnome.org/extension/751/audio-output-switcher/ *
+https://extensions.gnome.org/extension/3193/blur-my-shell/ *
+https://extensions.gnome.org/extension/1112/screenshot-tool/ *
+https://extensions.gnome.org/extension/3628/arcmenu/ *
 
+GNOME Theme:
+https://www.gnome-look.org/p/1013030/
+
+Other Helpful Links:
+https://wiki.archlinux.org/title/Archiso
