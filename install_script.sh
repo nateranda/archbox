@@ -6,24 +6,41 @@
 # Sync packages & update system
 sudo pacman -Syu
 
-# Install spice-vdagent
-
 # Install paru
-echo "Installing Paru..."
-read -p "Enter User:" user
-sudo pacman -S base-devel git
+sudo pacman -S base-devel git --noconfirm
 cd /opt
 sudo git clone https://aur.archlinux.org/paru.git
-sudo chown -R $user:$user ./yay
+sudo chown -R $USER:$USER ./yay
 cd yay
 makepkg -si
 
 # Install GNOME
-echo "Installing GNOME..."
-sudo pacman -S gnome xorg gnome-software-packagekit-plugin
-# Commented by default just in case
-# sudo systemctl enable gdm
+sudo pacman -S gnome xorg gnome-software-packagekit-plugin gnome-shell-extensions gnome-tweaks wget --noconfirm
+sudo systemctl enable gdm
+# Install theme and extensions
+paru -S gnome-shell-extension-blur-my-shell-git gnome-shell-extension-audio-output-switcher-git gnome-shell-extension-arc-menu-git gnome-shell-extension-arch-update gnome-shell-extension-screenshot-git gnome-terminal-transparency --noconfirm
+mkdir ~/.themes
+cd ~/.themes
+wget https://github.com/EliverLara/Nordic/releases/download/v1.9.0/Nordic-darker.tar.xz
+tar xf Nordic-darker.tar.xz
+rm Nordic-darker.tar.xz
+gsettings set org.gnome.desktop.interface gtk-theme "Nordic"
+gsettings set org.gnome.desktop.wm.preferences theme "Nordic"
 
 # Install Qtile
-echo "Installing Qtile..."
-sudo pacman -S qtile kitty
+sudo pacman -S qtile kitty firefox --noconfirm
+cp ~/Downloads/archbox/qtile/config.py ~/.config/qtile/config.py
+cp ~/Downloads/archbox/qtile/autostart.py ~/.config/qtile/autostart.py
+chmod 700 ~/.config/qtile/config.py
+
+# Install Spotify & Spicetify
+paru -S spotify spicetify-cli --noconfirm
+sudo chmod a+wr /usr/share/spotify
+sudo chmod a+wr /usr/share/spotify/Apps -R
+spicetify
+spicetify backup apply enable-devtool
+cd ~/Downloads
+git clone https://github.com/morpheusthewhite/spicetify-themes
+cp -r ~/Downloads/spicetify-themes/Nord ~/spicetify-cli/Themes/
+
+sudo pacman -S discord --noconfirm

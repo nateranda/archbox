@@ -56,13 +56,14 @@ systemctl enable dhcpcd
 NVIDIA Drivers:
 pacman -S nvidia nvidia-utils
 
-Intel Drivers:
-pacman -S mesa
-
-
 --REBOOT TO MAKE SURE EVERYTHING IS WORKING--
 exit
 reboot
+
+Clone archbox repo with:
+mkdir ~/Downloads
+cd ~/Downloads
+git clone http://github.com/nateranda/archbox
 
 MOST THINGS FROM NOW ON CAN BE INSTALLED USING THE INSTALL SCRIPT
 HERE ARE MANUAL INSTRUCTIONS IN CASE THAT DOESN'T WORK:
@@ -80,42 +81,55 @@ makepkg -si
 
 --GNOME--
 Install gnome with:
-sudo pacman -S gnome xorg
+sudo pacman -S gnome xorg gnome-software-packagekit-plugin
 
 (GDM won't be enabled by default in case something goes wrong.
 Enable the GDM service with 'sudo systemctl enable gdm')
-
-Fix GNOME Software issues with:
-sudo pacman -S gnome-software-packagekit-plugin
-
-Install archbox repo with:
-cd ~/Downloads
-https://github.com/brunelli/gnome-shell-extension-installer
 
 Install extensions & tweaks with:
 sudo pacman -S gnome-shell-extensions gnome-tweaks
 
 Command Line Way:
-mkdir -p ~/.local/share/gnome-shell/extensions/<UUID>
-unzip -q ~/Downloads/archbox/<UUID>.zip -d ~/.local/share/gnome-shell/extensions/<UUID>
-gnome-shell-extension-tool -e <UUID>
-OR
-paru -S gnome-shell-extension-blur-my-shell-git gnome-shell-extension-audio-output-switcher-git gnome-shell-extension-arc-menu gnome-shell-extension-arch-update gnome-shell-extension-screenshot-git
+paru -S gnome-shell-extension-blur-my-shell-git gnome-shell-extension-audio-output-switcher-git gnome-shell-extension-arc-menu-git gnome-shell-extension-arch-update gnome-shell-extension-screenshot-git
+then, restart GNOME
+
+GUI Way (recommended):
+Open firefox and install the GNOME Extension Firefox add-on.
+Then, enable these extensions:
+Blur My shell
+Audio Output Switcher
+Arch Update Indicator
+Arc Menu
+Screenshot Tool
+
+Install a transparent GNOME terminal with:
+paru -S gnome-terminal-transparency
+
+Download the nord-darker theme with:
+sudo pacman -S wget
+mkdir ~/.themes
+cd ~/.themes
+wget https://github.com/EliverLara/Nordic/releases/download/v1.9.0/Nordic-darker.tar.xz
+gsettings set org.gnome.desktop.interface gtk-theme "Nordic"
+gsettings set org.gnome.desktop.wm.preferences theme "Nordic"
 
 --QTILE--
 Install Qtile (and essential programs) with:
 sudo pacman -S qtile kitty firefox feh
 
-GNOME Extensions: (please lord get these tabs off of my hands)
-https://github.com/brunelli/gnome-shell-extension-installer
-https://extensions.gnome.org/extension/1010/archlinux-updates-indicator/ *
-https://extensions.gnome.org/extension/751/audio-output-switcher/ *
-https://extensions.gnome.org/extension/3193/blur-my-shell/ *
-https://extensions.gnome.org/extension/1112/screenshot-tool/ *
-https://extensions.gnome.org/extension/3628/arcmenu/ *
+cp ~/Downloads/archbox/qtile/config.py ~/.config/qtile/config.py
+cp ~/Downloads/archbox/qtile/autostart.py ~/.config/qtile/autostart.py
+chmod 700 ~/.config/qtile/config.py
 
-GNOME Theme:
-https://www.gnome-look.org/p/1013030/
+--MISC APPS--
+Install spotify with:
+paru -S spotify spicetify-cli
+spicetify
+spicetify backup apply enable-devtool
+
+--QUALITY OF LIFE--
+Go to keyboard in settings and set these keybinds:
+Terminal: gnome-terminal - Ctrl+Alt+T or Meta+Enter
 
 Other Helpful Links:
 https://wiki.archlinux.org/title/Archiso
