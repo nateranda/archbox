@@ -60,10 +60,13 @@ pacman -S nvidia nvidia-utils
 exit
 reboot
 
+Install virtualbox guest utils:
+sudo pacman -S virtualbox-guest-utils
+
 Clone archbox repo with:
 mkdir ~/Downloads
 cd ~/Downloads
-git clone http://github.com/nateranda/archbox
+git clone https://github.com/nateranda/archbox
 
 MOST THINGS FROM NOW ON CAN BE INSTALLED USING THE INSTALL SCRIPT
 HERE ARE MANUAL INSTRUCTIONS IN CASE THAT DOESN'T WORK:

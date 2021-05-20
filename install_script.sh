@@ -10,8 +10,8 @@ sudo pacman -Syu
 sudo pacman -S base-devel git --noconfirm
 cd /opt
 sudo git clone https://aur.archlinux.org/paru.git
-sudo chown -R $USER:$USER ./yay
-cd yay
+sudo chown -R $USER:$USER ./paru
+cd paru
 makepkg -si
 
 # Install GNOME
