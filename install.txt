@@ -61,7 +61,7 @@ exit
 reboot
 
 Install virtualbox guest utils:
-sudo pacman -S virtualbox-guest-utils
+sudo pacman -S virtualbox-guest-utils git
 
 Clone archbox repo with:
 mkdir ~/Downloads
@@ -105,6 +105,14 @@ Arch Update Indicator
 Arc Menu
 Screenshot Tool
 
+Install Pop Shell with:
+cd ~/Downloads
+git clone https://github.com/pop-os/shell
+cd shell
+sudo pacman -S typescript
+make
+make install
+
 Install a transparent GNOME terminal with:
 paru -S gnome-terminal-transparency
 
@@ -129,6 +137,12 @@ Install spotify with:
 paru -S spotify spicetify-cli
 spicetify
 spicetify backup apply enable-devtool
+
+Install discord with:
+sudo pacman -S discord
+
+Install vscode with:
+paru -S vscode
 
 --QUALITY OF LIFE--
 Go to keyboard in settings and set these keybinds:

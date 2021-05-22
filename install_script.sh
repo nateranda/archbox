@@ -15,7 +15,7 @@ cd paru
 makepkg -si
 
 # Install GNOME
-sudo pacman -S gnome xorg gnome-software-packagekit-plugin gnome-shell-extensions gnome-tweaks wget --noconfirm
+sudo pacman -S gnome xorg gnome-software-packagekit-plugin gnome-shell-extensions gnome-tweaks wget pacman-contrib --noconfirm
 sudo systemctl enable gdm
 # Install theme and extensions
 paru -S gnome-shell-extension-blur-my-shell-git gnome-shell-extension-audio-output-switcher-git gnome-shell-extension-arc-menu-git gnome-shell-extension-arch-update gnome-shell-extension-screenshot-git gnome-terminal-transparency --noconfirm
@@ -28,13 +28,13 @@ gsettings set org.gnome.desktop.interface gtk-theme "Nordic"
 gsettings set org.gnome.desktop.wm.preferences theme "Nordic"
 
 # Install Qtile
-sudo pacman -S qtile kitty firefox --noconfirm
+sudo pacman -S qtile kitty firefox -noconfirm
 cp ~/Downloads/archbox/qtile/config.py ~/.config/qtile/config.py
 cp ~/Downloads/archbox/qtile/autostart.py ~/.config/qtile/autostart.py
 chmod 700 ~/.config/qtile/config.py
 
 # Install Spotify & Spicetify
-paru -S spotify spicetify-cli --noconfirm
+paru -S spotify-snap spicetify-cli-git --noconfirm
 sudo chmod a+wr /usr/share/spotify
 sudo chmod a+wr /usr/share/spotify/Apps -R
 spicetify
