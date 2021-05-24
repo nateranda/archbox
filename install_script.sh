@@ -4,7 +4,7 @@
 # I AM ONE PERSON AND THERE WILL BE OVERSIGHTS IN THIS
 
 # Sync packages & update system
-sudo pacman -Syu
+sudo pacman -Syu --noconfirm
 
 # Install paru
 sudo pacman -S base-devel git --noconfirm
@@ -26,12 +26,14 @@ tar xf Nordic-darker.tar.xz
 rm Nordic-darker.tar.xz
 gsettings set org.gnome.desktop.interface gtk-theme "Nordic"
 gsettings set org.gnome.desktop.wm.preferences theme "Nordic"
+echo "Done installing gnome" read _
 
 # Install Qtile
 sudo pacman -S qtile kitty firefox -noconfirm
 cp ~/Downloads/archbox/qtile/config.py ~/.config/qtile/config.py
 cp ~/Downloads/archbox/qtile/autostart.py ~/.config/qtile/autostart.py
 chmod 700 ~/.config/qtile/config.py
+echo "Done installing qtile" read _
 
 # Install Spotify & Spicetify
 paru -S spotify-snap spicetify-cli-git --noconfirm
@@ -42,5 +44,6 @@ spicetify backup apply enable-devtool
 cd ~/Downloads
 git clone https://github.com/morpheusthewhite/spicetify-themes
 cp -r ~/Downloads/spicetify-themes/Nord ~/spicetify-cli/Themes/
+echo "Done installing spotify" read _
 
 sudo pacman -S discord --noconfirm
