@@ -17,10 +17,10 @@ sudo systemctl enable gdm
 read -p "Done installing GNOME - press Enter to continue"
 
 # Install Qtile
-sudo pacman -S qtile kitty firefox -noconfirm
+sudo pacman -S qtile kitty --noconfirm
 read -p "Done installing Qtile - press Enter to continue"
 
 # Install misc programs
-paru -S spotify-snap
+paru -S spotify-snap --noconfirm
 sudo pacman -S discord --noconfirm
 read -p "Done installing misc programs - press Enter to continue"
