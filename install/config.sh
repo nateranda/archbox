@@ -12,5 +12,5 @@ gsettings set org.gnome.desktop.wm.preferences theme "Nordic"
 # Config Qtile
 paru -S nerd-fonts-anonymous-pro --noconfirm
 cp ~/Downloads/archbox/qtile/config.py ~/.config/qtile/config.py
-cp ~/Downloads/archbox/qtile/autostart.py ~/.config/qtile/autostart.py
+cp ~/Downloads/archbox/qtile/autostart.sh ~/.config/qtile/autostart.sh
 chmod 700 ~/.config/qtile/config.py
