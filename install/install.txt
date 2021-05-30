@@ -78,8 +78,8 @@ sudo pacman -S spice-vdagent
 sudo pacman -S base-devel git
 cd /opt
 sudo git clone https://aur.archlinux.org/paru.git
-sudo chown -R username:username ./yay
-cd yay
+sudo chown -R username:username ./paru
+cd paru
 makepkg -si
 
 --GNOME--
@@ -150,3 +150,6 @@ Terminal: gnome-terminal - Ctrl+Alt+T or Meta+Enter
 
 Other Helpful Links:
 https://wiki.archlinux.org/title/Archiso
+https://www.youtube.com/watch?v=Cii6eFR_Igc
+
+An Archiso build is in progress, but it'll probably take a long time.
