@@ -174,9 +174,10 @@ Then, log out of GNOME and log into Qtile. Install the Archbox Qtile config with
     chmod 700 ~/.config/qtile/autostart.py
 
 ## Misc Apps:
-Welcome back, script users! Install Spotify, Spicetify, and VSCode with:
+Welcome back, script users! Install misc apps with:
 
-    paru -S spotify spicetify-cli
+    paru -S spotify-snap spicetify-cli vscodium timeshift --noconfirm
+    sudo pacman -S discord vlc obs-studio --noconfirm
 
 You're on your own for installing a Spicetify theme - I keep getting errors about a config file and I don't know how to resolve it.
 
@@ -187,6 +188,18 @@ Install Discord with:
 ## Quality of Life
 Go to keyboard in settings and set these keybinds:
 
-    Terminal: gnome-terminal - Ctrl+Alt+T and/or Meta+Enter
+    gnome-terminal - Ctrl+Alt+T and/or Meta+Enter (Terminal)
+    nautilus - Meta+E (Files)
 
 For some reason, there isn't a way to assign multiple keybinds to one action. As a workaround, just create multiple entries, each with a different keybind.
+
+## Loose Ends
+Enable GNOME Termainal transparency with:
+
+    paru -S gnome-terminal-transparency
+
+Enable User Themes and any other installed extensions in the Extensions app. Pop Shell might crash GNOME when toggled on for the first time, so do that last and prepare for a reboot. It'll work fine after that, though.
+
+Enable the Nord theme by selecting nord-darker for the system and shell theme in the Appearance section of the Tweaks app.
+To enable the Maximize and Minimize buttons, toggle them on in the Window Titlebars section.
+Disable mouse acceleration by setting the Acceleration Profile dropdown to Flat in the Keyboard & Mouse section.
