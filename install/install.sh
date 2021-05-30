@@ -21,6 +21,6 @@ sudo pacman -S qtile kitty --noconfirm
 read -p "Done installing Qtile - press Enter to continue"
 
 # Install misc programs
-paru -S spotify-snap vscode --noconfirm
-sudo pacman -S discord timeshift vlc obs-studio --noconfirm
+paru -S spotify-snap vscode timeshift --noconfirm
+sudo pacman -S discord vlc obs-studio --noconfirm
 read -p "Done installing misc programs - press Enter to continue"
