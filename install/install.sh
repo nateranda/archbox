@@ -21,6 +21,6 @@ sudo pacman -S qtile kitty feh --noconfirm
 read -p "Done installing Qtile - press Enter to continue"
 
 # Install misc programs
-paru -S spotify-snap vscodium timeshift --noconfirm
-sudo pacman -S discord vlc obs-studio neofetch wget youtube-dl --noconfirm
+paru -S spotify-snap vscodium timeshift minecraft-launcher --noconfirm
+sudo pacman -S discord vlc obs-studio neofetch wget youtube-dl steam --noconfirm
 read -p "Done installing misc programs - press Enter to continue"

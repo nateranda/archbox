@@ -101,6 +101,8 @@ Make the scripts executable with:
     chmod +x ~/Downloads/achbox/install.sh
     chmod +x ~/Downloads/achbox/config.sh
 
+If you want to install Steam, enable the multilib repository by opening `/etc/pacman.conf` in a text editor and uncommenting the `[multilib]` line and the line below it. Then, upgrade the system with `sudo pacman -Syu` to sync the repos.
+
 Then, run the `install.sh` file with:
 
     . ~/Downloads/archbox/install.sh
