@@ -13,7 +13,7 @@ Install using this `README.md` file or with the `install.txt` file in the `insta
 ## Disclaimer
 Remember to check all scripts before running them on your machine. I'm only one person making this, and there's bound to be some mistakes here and there. Make sure to back up your files in case something goes wrong.
 
-# Base Install
+## Base Install
 Refer to the Arch Installation Guide here: https://wiki.archlinux.org/index.php/Installation_guide
 
 The install method changes from month to month so I'm not hard-coding it into the install script. Just pick what you like the best and go from there.
@@ -136,11 +136,17 @@ Install GNOME and configuration apps with:
     sudo pacman -S gnome xorg gnome-software-packagekit-plugin gnome-shell-extensions gnome-tweaks
     systemctl start gdm
 
-Then, log into your user. I like to use the Xorg option, as it's more compatible with things like Steam Proton.
+Then, log into your user. I like to use the Xorg option, as it's more widely supported compared to the new-ish Wayland compositor.
 
-To install extensions, install the GNOME Extensions firefox/chrome add-on. Then, enable the Blur My Shell, Audio Output Switcher, and Screenshot Tool extensions.
+To install extensions, install the GNOME Extensions firefox/chrome add-on. Then, enable these extensions:
 
-Pop Shell isn't yet updated for GNOME 40 on the extensions website. Install the Github version with:
+    Blur My Shell
+    Audio Output Switcher
+    Screenshot Tool
+
+Feel free to enable any others - some ones to consider are ArcMenu, Arch Update Indicator, and Dash to Dock.
+
+Pop Shell isn't yet updated for GNOME 40 on the extensions website. Install the Github version instead with:
 
     cd ~/Downloads
     git clone https://github.com/pop-os/shell
@@ -149,7 +155,7 @@ Pop Shell isn't yet updated for GNOME 40 on the extensions website. Install the 
     make
     make install
 
-Make the GNOME terminal transparent with:
+If you want to, make the GNOME terminal transparent with:
 
     paru -S gnome-terminal-transparency
 
@@ -170,31 +176,25 @@ Install Qtile and essential programs with:
 Then, log out of GNOME and log into Qtile. Install the Archbox Qtile config with:
 
     cp ~/Downloads/archbox/qtile/config.py ~/.config/qtile/config.py
-    cp ~/Downloads/archbox/qtile/autostart.py ~/.config/qtile/autostart.py
-    chmod 700 ~/.config/qtile/autostart.py
+    cp ~/Downloads/archbox/qtile/autostart.sh ~/.config/qtile/autostart.sh
+    chmod 700 ~/.config/qtile/autostart.sh
 
 ## Misc Apps:
-Welcome back, script users! Install misc apps with:
+Welcome back, script users! Install miscellaneous apps with:
 
-    paru -S spotify-snap spicetify-cli vscodium timeshift --noconfirm
-    sudo pacman -S discord vlc obs-studio --noconfirm
-
-You're on your own for installing a Spicetify theme - I keep getting errors about a config file and I don't know how to resolve it.
-
-Install Discord with:
-
-    sudo pacman -S discord
+    paru -S spotify-snap vscodium timeshift --noconfirm
+    sudo pacman -S discord vlc obs-studio neofetch wget youtube-dl --noconfirm
 
 ## Quality of Life
 Go to keyboard in settings and set these keybinds:
 
-    gnome-terminal - Ctrl+Alt+T and/or Meta+Enter (Terminal)
-    nautilus - Meta+E (Files)
+    gnome-terminal: Ctrl+Alt+T and/or Meta+Enter
+    nautilus: Meta+E
 
 For some reason, there isn't a way to assign multiple keybinds to one action. As a workaround, just create multiple entries, each with a different keybind.
 
 ## Loose Ends
-Enable GNOME Termainal transparency with:
+Enable GNOME Terminal transparency with:
 
     paru -S gnome-terminal-transparency
 
