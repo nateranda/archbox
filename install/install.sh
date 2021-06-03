@@ -17,7 +17,7 @@ sudo systemctl enable gdm
 read -p "Done installing GNOME - press Enter to continue"
 
 # Install Qtile
-sudo pacman -S qtile kitty feh --noconfirm
+sudo pacman -S qtile kitty feh firefox --noconfirm
 read -p "Done installing Qtile - press Enter to continue"
 
 # Install misc programs
