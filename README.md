@@ -101,7 +101,7 @@ Make the scripts executable with:
     chmod +x ~/Downloads/achbox/install.sh
     chmod +x ~/Downloads/achbox/config.sh
 
-If you want to install Steam, enable the multilib repository by opening `/etc/pacman.conf` in a text editor and uncommenting the `[multilib]` line and the line below it. Then, upgrade the system with `sudo pacman -Syu` to sync the repos.
+If you want to install Steam, enable the multilib repository by opening `/etc/pacman.conf` in a text editor and uncommenting the `[multilib]` line and the line below it. Then, upgrade the system with `sudo pacman -Syu` to sync the repos. If not, remove steam from the last line of `install.sh`.
 
 Then, run the `install.sh` file with:
 
@@ -196,10 +196,6 @@ Go to keyboard in settings and set these keybinds:
 For some reason, there isn't a way to assign multiple keybinds to one action. As a workaround, just create multiple entries, each with a different keybind.
 
 ## Loose Ends
-Enable GNOME Terminal transparency with:
-
-    paru -S gnome-terminal-transparency
-
 Enable User Themes and any other installed extensions in the Extensions app. Pop Shell might crash GNOME when toggled on for the first time, so do that last and prepare for a reboot. It'll work fine after that, though.
 
 Enable the Nord theme by selecting nord-darker for the system and shell theme in the Appearance section of the Tweaks app.
