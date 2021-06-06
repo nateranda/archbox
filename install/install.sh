@@ -22,5 +22,5 @@ read -p "Done installing Qtile - press Enter to continue"
 
 # Install misc programs
 paru -S spotify-snap timeshift minecraft-launcher --noconfirm
-sudo pacman -S discord vlc obs-studio neofetch youtube-dl code steam qbittorrent ntfs-3g fuse --noconfirm
+sudo pacman -S discord vlc obs-studio neofetch youtube-dl code steam qbittorrent ntfs-3g fuse virtualbox-host-modules-arch virtualbox --noconfirm
 read -p "Done installing misc programs - press Enter to continue"

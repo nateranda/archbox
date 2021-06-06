@@ -184,8 +184,8 @@ Then, log out of GNOME and log into Qtile. Install the Archbox Qtile config with
 ## Misc Apps:
 Welcome back, script users! Install miscellaneous apps with:
 
-    paru -S spotify-snap timeshift --noconfirm
-    sudo pacman -S discord vlc obs-studio neofetch wget youtube-dl steam code qbittorrent ntfs-3g fuse --noconfirm
+    paru -S spotify-snap timeshift
+    sudo pacman -S discord vlc obs-studio neofetch wget youtube-dl steam code qbittorrent ntfs-3g fuse virtualbox
 
 ## Quality of Life
 Go to keyboard in settings and set these keybinds:
