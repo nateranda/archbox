@@ -173,7 +173,7 @@ Download and enable the nord-darker theme with:
 ## Qtile
 Install Qtile and essential programs with:
 
-    sudo pacman -S qtile kitty feh firefox
+    sudo pacman -S xorg-xinit qtile kitty feh firefox
 
 Then, log out of GNOME and log into Qtile. Install the Archbox Qtile config with:
 
