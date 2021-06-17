@@ -138,6 +138,10 @@ Install GNOME and configuration apps with:
     sudo pacman -S gnome xorg gnome-software-packagekit-plugin gnome-shell-extensions gnome-tweaks
     systemctl start gdm
 
+Remove unwanted GNOME default apps with:
+
+	sudo pacman -R gnome-books gnome-contacts gnome-maps gnome-music gnome-weather simple-scan
+
 Then, log into your user. I like to use the Xorg option, as it's more widely supported compared to the new-ish Wayland compositor.
 
 To install extensions, install the GNOME Extensions firefox/chrome add-on. Then, enable these extensions:

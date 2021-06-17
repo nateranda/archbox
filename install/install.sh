@@ -14,6 +14,8 @@ read -p "Done installing paru - press Enter to continue"
 # Install GNOME
 sudo pacman -S gnome xorg gnome-software-packagekit-plugin gnome-shell-extensions gnome-tweaks wget pacman-contrib --noconfirm
 sudo systemctl enable gdm
+# Remove unwanted GNOME packages
+sudo pacman -R gnome-books gnome-contacts gnome-maps gnome-music gnome-weather simple-scan
 read -p "Done installing GNOME - press Enter to continue"
 
 # Install Qtile
