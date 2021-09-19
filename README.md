@@ -19,12 +19,14 @@ Refer to the Arch Installation Guide here: https://wiki.archlinux.org/index.php/
 The install method changes from month to month so I'm not hard-coding it into the install script. Just pick what you like the best and go from there.
 
 ## Swapfile
-Do this after mounting the main partition but before pacstrap. Create the swapfile with:
+Do this after arch-chroot. Create the swapfile with:
 
-    dd if=/dev/zero of=/mnt/swapfile bs=1M count=4096 status=progress
-    chmod 600 /mnt/swapfile
-    mkswap /mnt/swapfile
-    swapon /mnt/swapfile
+    dd if=/dev/zero of=/swapfile bs=1M count=4096 status=progress
+    chmod 600 /swapfile
+    mkswap /swapfile
+    swapon /swapfile
+    
+Then, add `/swapfile none swap defaults 0 0` to the end of `/etc/fstab`.
 
 ## GRUB
 Install on DOS with:
