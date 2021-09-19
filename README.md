@@ -21,28 +21,50 @@ The install method changes from month to month so I'm not hard-coding it into th
 ## Swapfile
 Do this after arch-chroot. Create the swapfile with:
 
-    dd if=/dev/zero of=/swapfile bs=1M count=4096 status=progress
+    dd if=/dev/zero of=/swapfile bs=1M count=4096 status=progress (change count based on size preference)
     chmod 600 /swapfile
     mkswap /swapfile
     swapon /swapfile
     
 Then, add `/swapfile none swap defaults 0 0` to the end of `/etc/fstab`.
 
-## GRUB
-Install on DOS with:
+## GRUB with DOS
+Install with:
 
     pacman -S grub
     grub-install /dev/sdX
     grub-mkconfig -o /boot/grub/grub.cfg
 
-Install on UEFI with:
+## GRUB with UEFI
+First, install some packages and mount your EFI partition:
 
-    pacman -S grub efibootmgr dosfstools
-    mkfs.fat -F32 /dev/sda1
-    mkdir /boot/EFI
-    mount /dev/sda1 /boot/EFI
-    grub-install --target=x86_64-efi --bootloader-id=grub_uefi --recheck
-    grub-mkconfig -o /boot/grub/grub.cfg
+	pacman -S grub efibootmgr os-prober dosfstools
+	mount /dev/sdXY /boot
+	
+Install with:
+
+	grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
+
+Then, enable os-prober by adding `GRUB_DISABLE_OS_PROBER=false` to the end of `/etc/default/grub`.
+
+Finally, create the config file with:
+
+	grub-mkconfig -o /boot/grub/grub.cfg
+
+## rEFInd (UNFINISHED)
+Some people prefer installing rEFInd instead of GRUB for UEFI machines. First, mount your EFI partition:
+
+	mount /dev/sdXY /boot
+
+Then, install with:
+
+	pacman -S refind-efi efibootmgr
+	refind-install --usedefault /dev/sdXY --alldrivers
+	mkrlconf
+
+If you're dual-booting, use the EFI partition from your existing Windows install. If not, just use the EFI partition you made when formatting your disk.
+
+Finally, delete any lines pertaining to archiso in `/boot/EFI/`.
 
 ## Users & Sudo
 Create a user with `sudo` perms with:
