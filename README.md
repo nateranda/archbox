@@ -51,20 +51,13 @@ Finally, create the config file with:
 
 	grub-mkconfig -o /boot/grub/grub.cfg
 
-## rEFInd (UNFINISHED)
-Some people prefer installing rEFInd instead of GRUB for UEFI machines. First, mount your EFI partition:
+## rEFInd
+I prefer installing rEFInd instead of GRUB for UEFI machines, as it offers mouse support. Install with:
 
-	mount /dev/sdXY /boot
-
-Then, install with:
-
-	pacman -S refind-efi efibootmgr
-	refind-install --usedefault /dev/sdXY --alldrivers
-	mkrlconf
-
-If you're dual-booting, use the EFI partition from your existing Windows install. If not, just use the EFI partition you made when formatting your disk.
-
-Finally, delete any lines pertaining to archiso in `/boot/EFI/`.
+	pacman -S refind
+	refind-install
+	
+Then, replace the UUID of `/boot/refind-linux.conf` and `/boot/EFI/refind/refind.conf` with your EFI partition.
 
 ## Users & Sudo
 Create a user with `sudo` perms with:
