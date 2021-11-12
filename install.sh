@@ -1,2 +1,3 @@
-bash pre-install.sh
-arch-chroot /mnt /base-install.sh
+bash 1-pre-install.sh
+chmod +x /mnt/2-base-install.sh
+arch-chroot /mnt /2-base-install.sh
