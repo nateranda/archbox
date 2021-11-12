@@ -15,7 +15,7 @@ read -r -p "Hostname: " hostname
 echo $hostname > /etc/hostname
 
 # Install other essential packages
-pacman -S sudo dhcpcd networkmanager base-devel git --noconfirm
+pacman -S sudo dhcpcd networkmanager base-devel git --noconfirm --needed
 
 # Create user
 read -r -p "Username: " username
@@ -34,7 +34,7 @@ pacman -S grub --noconfirm
 grub-install
 grub-mkconfig -o /boot/grub/grub.cfg
 
-elif [$bootloader == "U"];
+elif [ $bootloader == "U" ];
 then
 pacman -S grub efibootmgr os-prober dosfstools --noconfirm
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
