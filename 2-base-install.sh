@@ -1,6 +1,13 @@
 echo "Set root password"
 passwd
 
+# make swapfile
+dd if=/dev/zero of=/swapfile bs=1M count=2048 status=progress (change count based on size preference)
+chmod 600 /swapfile
+mkswap /swapfile
+swapon /swapfile
+echo "/swapfile none swap defaults 0 0" >> /etc/fstab
+
 # Set up timezone
 ln -sf /usr/share/zoneinfo/America/New_York /etc/localtime
 hwclock --systohc
