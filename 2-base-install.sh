@@ -28,7 +28,7 @@ visudo
 
 read -r -p "Bootloader Disk? (usually the same as your install disk): " disk
 read -r -p "What bootloader? [G]RUB, GRUB [U]EFI, or [R]EFIND: " bootloader
-if [$bootloader == "G"];
+if [ $bootloader == "G" ];
 then
 pacman -S grub --noconfirm
 grub-install
