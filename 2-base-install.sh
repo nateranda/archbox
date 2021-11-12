@@ -2,7 +2,7 @@ echo "Set root password"
 passwd
 
 # make swapfile
-dd if=/dev/zero of=/swapfile bs=1M count=2048 status=progress (change count based on size preference)
+dd if=/dev/zero of=/swapfile bs=1M count=2048 status=progress
 chmod 600 /swapfile
 mkswap /swapfile
 swapon /swapfile
