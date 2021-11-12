@@ -24,6 +24,11 @@ echo $hostname > /etc/hostname
 # Install other essential packages
 pacman -S sudo dhcpcd networkmanager base-devel git --noconfirm --needed
 
+# Enable necessary processes
+systemctl enable dhcpcd
+systemctl enable NetworkManager
+systemctl enable bluetooth
+
 # Create user
 read -r -p "Username: " username
 useradd -m $username
