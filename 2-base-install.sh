@@ -28,13 +28,13 @@ visudo
 
 read -r -p "Bootloader Disk? (usually the same as your install disk): " disk
 read -r -p "What bootloader? [G]RUB, GRUB [U]EFI, or [R]EFIND: " bootloader
-if $bootloader = "G";
+if $bootloader == "G";
 then
 pacman -S grub --noconfirm
 grub-install
 grub-mkconfig -o /boot/grub/grub.cfg
 
-elif $bootloader = "U";
+elif $bootloader == "U";
 then
 pacman -S grub efibootmgr os-prober dosfstools --noconfirm
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
