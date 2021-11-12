@@ -4,14 +4,18 @@ My personal Arch setup featuring a comfy GNOME desktop and a focused Qtile deskt
 ## Theme
 Nord is the main theme used in both desktop environments because it looks cool and has wide support accross many different programs. Go to [nordtheme.com](https://www.nordtheme.com/) to see all supported programs.
 
-## Basic Usage
-Most of the usage for both GNOME and Qtile is vanilla. The main major difference is the Qtile directional keybinds - I like to use the arrow keys instead of the vim bindings. Besides that, I use mod+q to close a window. Qtile keybindings are easy enough to change in the `config.py` file located in `~.config/qtile`.
+## Design Philosophy
+Contrary to many power users, I feel that there is sometimes *too much* customizability — I think DEs like KDE end up bogging down their own system in pursuit of the most customizability possible. That's what gravitates me towards GNOME so much — I find myself using every major feature it offers without wanting much more out of it, and it offers just as much customizability as other DEs with its extensions and tweak apps.
 
-# Installation
-Install using this `README.md` file or with the `install.txt` file in the `install` directory. Much of the setup after the base installation can be done with the `install` and `config` shell scripts.
+## User Experience
+Vanilla GNOME offers a very streamlined workflow that is fairly consistent in its design right out of the box, which is why I've chosen it as my main desktop environment. Aside from theming, extensions, and a couple setting changes, my personal GNOME install functions exactly like vanilla.
 
-## Disclaimer
-Remember to check all scripts before running them on your machine. I'm only one person making this, and there's bound to be some mistakes here and there. Make sure to back up your files in case something goes wrong.
+When I want a completely straightforward and distraction-free DE, I go with Qtile, mainly for its Python config file and its extensive top-bar theming. For my configuration, he main major difference is the directional keybinds — I like to use the arrow keys instead of the vim bindings. I also use mod+q to quit a window like macOS. Keybinds are easy enough to change in the `config.py` file located in `~.config/qtile`.
+
+# Using the Scripts
+
+
+# Manual Install
 
 ## Base Install
 Refer to the Arch Installation Guide here: https://wiki.archlinux.org/index.php/Installation_guide
@@ -27,15 +31,16 @@ Do this after arch-chroot. Create the swapfile with:
     swapon /swapfile
     
 Then, add `/swapfile none swap defaults 0 0` to the end of `/etc/fstab`.
+## Bootloader
 
-## GRUB with DOS
+### GRUB with DOS
 Install with:
 
     pacman -S grub
     grub-install /dev/sdX
     grub-mkconfig -o /boot/grub/grub.cfg
 
-## GRUB with UEFI
+### GRUB with UEFI
 First, install some packages and mount your EFI partition:
 
 	pacman -S grub efibootmgr os-prober dosfstools
@@ -51,13 +56,13 @@ Finally, create the config file with:
 
 	grub-mkconfig -o /boot/grub/grub.cfg
 
-## rEFInd
+### rEFInd (UEFI ONLY)
 I prefer installing rEFInd instead of GRUB for UEFI machines, as it offers mouse support. Install with:
 
 	pacman -S refind
 	refind-install
 	
-Then, replace the UUID of `/boot/refind-linux.conf` and `/boot/EFI/refind/refind.conf` with your EFI partition.
+Then, delete the first two lines & replace the UUID of `/boot/refind-linux.conf`. Also  and `/boot/EFI/refind/refind.conf` with your EFI partition.
 
 ## Users & Sudo
 Create a user with `sudo` perms with:
@@ -68,7 +73,7 @@ Create a user with `sudo` perms with:
     usermod -aG wheel user_name
     visudo (uncomment %wheel line)
 
-You're welcome to add the user to more groups as you wish. If you don't want to use vim for visudo, put `EDITOR=nano` before `visudo` to use nano instead.
+You're welcome to add the user to more groups as you wish. If you don't want to use vim for visudo, add `EDITOR=nano` in front of `visudo` to use nano instead.
 
 ## Other Stuff
 Bluetooth:
