@@ -31,7 +31,7 @@ read -r -p "What bootloader? [G]RUB, GRUB [U]EFI, or [R]EFIND: " bootloader
 if [ $bootloader == "G" ];
 then
 pacman -S grub --noconfirm
-grub-install
+grub-install $disk
 grub-mkconfig -o /boot/grub/grub.cfg
 
 elif [ $bootloader == "U" ];
