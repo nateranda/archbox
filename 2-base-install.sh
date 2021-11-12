@@ -26,8 +26,8 @@ echo "Uncomment %wheel line in vim."
 sleep 3
 visudo
 
-read -r -p "Bootloader Disk? (usually the same as your install disk):" disk
-read -r -p "What bootloader? [G]RUB, GRUB [U]EFI, or [R]EFIND?" bootloader
+read -r -p "Bootloader Disk? (usually the same as your install disk): " disk
+read -r -p "What bootloader? [G]RUB, GRUB [U]EFI, or [R]EFIND: " bootloader
 if $bootloader = "G";
 then
 pacman -S grub --noconfirm
@@ -39,3 +39,4 @@ then
 pacman -S grub efibootmgr os-prober dosfstools --noconfirm
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
 grub-mkconfig -o /boot/grub/grub.cfg
+fi
