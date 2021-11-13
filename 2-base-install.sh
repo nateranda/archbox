@@ -47,7 +47,7 @@ pacman -S grub efibootmgr os-prober dosfstools --noconfirm
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
 grub-mkconfig -o /boot/grub/grub.cfg
 
-else; then
+else
 pacman -S grub --noconfirm
 grub-install $disk
 grub-mkconfig -o /boot/grub/grub.cfg

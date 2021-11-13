@@ -9,4 +9,5 @@ rm /mnt/2-base-install.sh
 
 # Gnome install
 cp 3-gnome-install.sh /mnt/3-gnome-install.sh
+chmod +x /mnt/3-gnome-install.sh
 arch-chroot /mnt /3-gnome-install.sh
