@@ -2,17 +2,18 @@ echo "Set root password"
 passwd
 
 # make swapfile
-dd if=/dev/zero of=/swapfile bs=1M count=2048 status=progress
+read -r -p "Swapfile Size (in megabytes): " swapsize
+dd if=/dev/zero of=/swapfile bs=1M count=$swapsize status=progress
 chmod 600 /swapfile
 mkswap /swapfile
 swapon /swapfile
 echo "/swapfile none swap defaults 0 0" >> /etc/fstab
 
-# Set up timezone
+# Set up timezone (CHANGE TO PREFERRED TIMEZONE)
 ln -sf /usr/share/zoneinfo/America/New_York /etc/localtime
 hwclock --systohc
 
-# Set up locale
+# Set up locale (CHANGE TO PREFERRED LOCALE)
 sed --in-place=.bak 's/^#en_US\.UTF-8/en_US\.UTF-8/' /etc/locale.gen
 locale-gen
 echo LANG=en_US.UTF-8 > /etc/locale.conf
@@ -22,7 +23,7 @@ read -r -p "Hostname: " hostname
 echo $hostname > /etc/hostname
 
 # Install other essential packages
-pacman -S sudo dhcpcd networkmanager base-devel git --noconfirm --needed
+pacman -S sudo dhcpcd networkmanager base-devel git unzip --noconfirm --needed
 
 # Enable necessary processes
 systemctl enable dhcpcd
@@ -38,17 +39,22 @@ echo "Uncomment %wheel line in vim."
 sleep 3
 visudo
 
-read -r -p "Bootloader Disk? (usually the same as your install disk): " disk
-read -r -p "What bootloader? [G]RUB, GRUB [U]EFI, or [R]EFIND: " bootloader
-if [ $bootloader == "G" ];
-then
-pacman -S grub --noconfirm
-grub-install $disk
-grub-mkconfig -o /boot/grub/grub.cfg
+# Install bootloader
+read -r -p "Bootloader Disk? (usually the same as your install disk eg. /dev/sda): " disk
 
-elif [ $bootloader == "U" ];
-then
+if [ -e /sys/firmware/efi ]; then
 pacman -S grub efibootmgr os-prober dosfstools --noconfirm
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
 grub-mkconfig -o /boot/grub/grub.cfg
+
+else; then
+pacman -S grub --noconfirm
+grub-install $disk
+grub-mkconfig -o /boot/grub/grub.cfg
 fi
+
+# Install paru
+cd /opt
+git clone https://aur.archlinux.org/paru.git
+cd paru
+makepkg -si

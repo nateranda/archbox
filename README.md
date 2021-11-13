@@ -79,7 +79,7 @@ You're welcome to add the user to more groups as you wish. If you don't want to 
 Bluetooth:
 
     pacman -S bluez bluez-utils
-    systemctl start bluetooth
+    systemctl enable bluetooth
 
 Wi-Fi:
 
