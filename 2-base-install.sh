@@ -1,6 +1,3 @@
-echo "Set root password"
-passwd
-
 # make swapfile
 read -r -p "Swapfile Size (in megabytes): " swapsize
 dd if=/dev/zero of=/swapfile bs=1M count=$swapsize status=progress
@@ -30,14 +27,29 @@ systemctl enable dhcpcd
 systemctl enable NetworkManager
 systemctl enable bluetooth
 
+# Set root password
+echo "Set root password"
+passwd
+
 # Create user
 read -r -p "Username: " username
 useradd -m $username
 passwd $username
 usermod -aG wheel,audio,video $username
-echo "Uncomment %wheel line in vim."
-sleep 3
-visudo
+sed -i 's/^# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers
+
+# Determine processor type and install microcode
+proc_type=$(lscpu | awk '/Vendor ID:/ {print $3}')
+case "$proc_type" in
+	GenuineIntel)
+		print "Installing Intel microcode"
+		pacman -S --noconfirm intel-ucode
+		;;
+	AuthenticAMD)
+		print "Installing AMD microcode"
+		pacman -S --noconfirm amd-ucode
+		;;
+esac	
 
 # Install bootloader
 read -r -p "Bootloader Disk? (usually the same as your install disk eg. /dev/sda): " disk
@@ -52,6 +64,3 @@ pacman -S grub --noconfirm
 grub-install $disk
 grub-mkconfig -o /boot/grub/grub.cfg
 fi
-
-# Install paru
-sudo -H -u $username bash -c "git clone https://aur.archlinux.org/yay-bin.git /tmp/yay-bin;cd /tmp/yay-bin/;makepkg -si --noconfirm;yay -Syu --noconfirm"
