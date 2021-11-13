@@ -54,7 +54,4 @@ grub-mkconfig -o /boot/grub/grub.cfg
 fi
 
 # Install paru
-cd /opt
-git clone https://aur.archlinux.org/paru.git
-cd paru
-makepkg -si
+sudo -H -u $username bash -c "git clone https://aur.archlinux.org/yay-bin.git /tmp/yay-bin;cd /tmp/yay-bin/;makepkg -si --noconfirm;yay -Syu --noconfirm"
