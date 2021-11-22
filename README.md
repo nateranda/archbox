@@ -4,7 +4,7 @@ My personal Arch setup featuring a comfy GNOME desktop and a focused Qtile deskt
 ## Theme
 Nord is the main theme used in both desktop environments because it looks cool and has wide support accross many different programs. Go to [nordtheme.com](https://www.nordtheme.com/) to see all supported programs.
 
-## Design Philosophy
+## Design
 Contrary to many power users, I feel that there is sometimes *too much* customizability — I think DEs like KDE end up bogging down their own system in pursuit of the most customizability possible. That's what gravitates me towards GNOME so much — I find myself using every major feature it offers without wanting much more out of it, and it offers just as much customizability as other DEs with its extensions and tweak apps.
 
 ## User Experience
