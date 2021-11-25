@@ -1,3 +1,6 @@
+# Update
+I have decided to archive this project and instead host my own Arch setup in the example config file of my new project [Archscript](https://www.github.com/nateranda/archscript). This repository won't be updated anymore.
+
 # Archbox
 My personal Arch setup featuring a comfy GNOME desktop and a focused Qtile desktop.
 
